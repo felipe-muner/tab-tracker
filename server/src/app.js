@@ -1,18 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { sequelize } = require("./models");
+const config = require("./config/config");
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send({ tudo: "ok" });
-});
+require("./routes")(app);
 
-app.post("/register", (req, res) => {
-  res.send({ message: `Hello ${req.body.email}!` });
+sequelize.sync().then(() => {
+  app.listen(config.port);
+  console.log(`server on 8081 ${config.port}`);
 });
-
-app.listen(process.env.PORT || 8081);

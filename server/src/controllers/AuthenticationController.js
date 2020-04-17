@@ -40,12 +40,12 @@ module.exports = {
     try {
       const { email, password } = req.body;
       const user = await User.findOne({ where: { email } });
+
       if (!user) {
         return res.status(403).send({
           error: "The login information is incorrect. there is not user",
         });
       }
-
       const isPasswordValid = await user.comparePassword(password);
 
       if (!isPasswordValid) {

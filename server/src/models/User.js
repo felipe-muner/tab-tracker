@@ -17,24 +17,11 @@ module.exports = (sequelize, DataTypes) => {
           user.setDataValue("password", await bcrypt.hash(user.password, 8));
         },
       },
-      instanceMethods: {
-        felipePasswordBoladao: (password) => {
-          console.log("felipePasswordBoladao: function (password) {");
-        },
-      },
     }
   );
 
-  User.prototype.comparePassword = function (password) {
-    bcrypt.compare(password, this.password, function (err, result) {
-      result ? true : false;
-    });
-  };
-
-  User.prototype.felipeTeste = function () {
-    console.log("User.prototype.felipeTeste = function () {");
-    console.log(this);
-    console.log("User.prototype.felipeTeste = function () {");
+  User.prototype.comparePassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
   };
 
   return User;

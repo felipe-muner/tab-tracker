@@ -5,23 +5,12 @@
         <v-card flat>
           <v-toolbar color="primary" dark extended flat :elevation="15">
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
-            <!-- <v-btn icon>
-              <v-icon>mdi-magnify</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-              <v-icon>mdi-apps</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-              <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn>-->
           </v-toolbar>
 
           <v-card class="mx-auto" max-width="70%" style="margin-top: -64px;">
             <v-toolbar flat>
               <v-spacer></v-spacer>
-              <v-toolbar-title class="black--text">Register</v-toolbar-title>
+              <v-toolbar-title class="black--text">Login</v-toolbar-title>
               <v-spacer></v-spacer>
             </v-toolbar>
             <v-divider></v-divider>
@@ -42,29 +31,8 @@
                   @click:append="show1 = !show1"
                 ></v-text-field>
                 <br />
-                <v-btn @click="register" color="primary">Register</v-btn>
+                <v-btn @click="login" color="primary">Login</v-btn>
               </v-card>
-              <!-- </v-col>
-              </v-row>-->
-              <!-- <div>
-          <input
-            type="email"
-            name="email"
-            v-model="email"
-            placeholder="email"
-          />
-          <br />
-          <input
-            type="password"
-            name="password"
-            v-model="password"
-            placeholder="password"
-          />
-          <br />
-          <div v-html="error" class="error"></div>
-          <br />
-          <v-btn class="primary" @click="register">Register</v-btn>
-              </div>-->
             </v-card-text>
           </v-card>
         </v-card>
@@ -84,37 +52,21 @@ export default {
       error: null
     };
   },
-  // watch: {
-  //   email(value) {
-  //     console.log(value);
-  //   }
-  // },
   methods: {
-    async register() {
+    async login() {
       try {
-        await AuthenticationService.register({
+        await AuthenticationService.login({
           email: this.email,
           password: this.password
         });
       } catch (error) {
-        // for (let [key, value] of Object.entries(error)) {
-        //   console.log(`${key}: ${value}`);
-        // }
         this.error = error.response.data.error;
       }
     }
   }
-  // mounted() {
-  //   setTimeout(() => {
-  //     alert((this.email = "hello world"));
-  //   }, 1000);
-  // }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.error {
-  color: red;
-}
 </style>

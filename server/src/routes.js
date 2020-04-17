@@ -10,4 +10,6 @@ module.exports = (app) => {
   );
 
   app.post("/login", AuthenticationController.login);
+
+  app.get("/users", AuthenticationController.getAll);
 };

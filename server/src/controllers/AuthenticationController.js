@@ -10,16 +10,32 @@ function jwtSignUser(user) {
 }
 
 module.exports = {
-  async register(req, res) {
+  async getAll(req, res) {
     try {
-      const user = await User.create(req.body);
-      res.send(user.toJSON());
+      const users = await User.findAll();
+      res.send(users);
     } catch (error) {
+      console.log(error);
       res.status(400).send({
-        error: "This e-mail is already in use",
+        error: error,
       });
     }
   },
+  async register(req, res) {
+    try {
+      const user = await User.create(req.body);
+      console.log("async login(req, res) {");
+      console.log(user);
+      console.log("async login(req, res) {");
+      res.send(user.toJSON());
+    } catch (error) {
+      console.log(error);
+      res.status(400).send({
+        error: error,
+      });
+    }
+  },
+
   async login(req, res) {
     try {
       const { email, password } = req.body;
@@ -30,7 +46,7 @@ module.exports = {
         });
       }
 
-      const isPasswordValid = password === user.password;
+      const isPasswordValid = await user.comparePassword(password);
 
       if (!isPasswordValid) {
         return res

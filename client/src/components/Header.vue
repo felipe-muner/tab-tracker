@@ -21,18 +21,19 @@
       >BROWSE</v-btn>
 
       <v-spacer></v-spacer>
+      <div class="my-auto" v-if="!$store.state.isUserLoggedIn">
+        <v-btn
+          class="primary--text ml-5"
+          color="white"
+          @click="() => this.$router.push('login')"
+        >Sign In</v-btn>
 
-      <v-btn
-        class="primary--text my-auto ml-5"
-        color="white"
-        @click="() => this.$router.push('login')"
-      >Sign In</v-btn>
-
-      <v-btn
-        class="primary--text my-auto ml-5"
-        color="white"
-        @click="() => this.$router.push('register')"
-      >Sign Up</v-btn>
+        <v-btn
+          class="primary--text ml-5"
+          color="white"
+          @click="() => this.$router.push('register')"
+        >Sign Up</v-btn>
+      </div>
     </v-toolbar>
   </v-card>
 </template>

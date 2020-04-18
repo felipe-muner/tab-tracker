@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h1>Panel Crud</h1>
+    <h1>Panel Crud Boilerplate</h1>
+    <slot name="title"></slot>
     <slot name="header"></slot>
     <slot name="footer"></slot>
   </div>

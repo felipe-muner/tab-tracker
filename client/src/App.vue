@@ -2,12 +2,7 @@
   <div id="app">
     <v-app>
       <Header></Header>
-      <!-- <div id="nav">
-        <router-link to="/">Home</router-link>|
-        <router-link to="/about">About</router-link>|
-        <router-link to="/register">Register</router-link>
-      </div>-->
-      <router-view />
+      <router-view></router-view>
     </v-app>
   </div>
 </template>
@@ -29,16 +24,18 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.fade-enter-active,
+.fade-leave-active {
+  transition-property: opacity;
+  transition-duration: 0.25s;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.fade-enter-active {
+  transition-delay: 0.25s;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

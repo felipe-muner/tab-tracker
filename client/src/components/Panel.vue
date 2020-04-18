@@ -9,8 +9,11 @@
     <v-container>
       <v-row dense>
         <v-col cols="12">
-          <h1>hello brasil</h1>
-          <div>wqe</div>
+          <slot> No data defined. </slot>
+          <!-- <div>
+            <slot name="felipe"> </slot>
+            <slot name="content"></slot>
+          </div> -->
         </v-col>
       </v-row>
     </v-container>

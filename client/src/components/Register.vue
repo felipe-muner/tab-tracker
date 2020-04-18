@@ -30,7 +30,12 @@
               <!-- <v-row>
               <v-col md="4" offset-md="4">-->
               <v-card class="pa-2 elevation-0">
-                <v-text-field v-model="email" label="E-mail" outlined hint="Don't forget it"></v-text-field>
+                <v-text-field
+                  v-model="email"
+                  label="E-mail"
+                  outlined
+                  hint="Don't forget it"
+                ></v-text-field>
                 <v-text-field
                   v-model="password"
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
@@ -44,27 +49,6 @@
                 <br />
                 <v-btn @click="register" color="primary">Register</v-btn>
               </v-card>
-              <!-- </v-col>
-              </v-row>-->
-              <!-- <div>
-          <input
-            type="email"
-            name="email"
-            v-model="email"
-            placeholder="email"
-          />
-          <br />
-          <input
-            type="password"
-            name="password"
-            v-model="password"
-            placeholder="password"
-          />
-          <br />
-          <div v-html="error" class="error"></div>
-          <br />
-          <v-btn class="primary" @click="register">Register</v-btn>
-              </div>-->
             </v-card-text>
           </v-card>
         </v-card>

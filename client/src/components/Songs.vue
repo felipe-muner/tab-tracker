@@ -1,8 +1,20 @@
 <template>
   <div>
     <Panel title="Songs">
+      <div slot="actions">
+        <v-btn
+          class="blue white--text"
+          small
+          fab
+          right
+          @click="() => this.$router.push({ name: 'songs-create' })"
+          ><v-icon>+</v-icon></v-btn
+        >
+      </div>
+      <br />
+      <br />
       <div v-for="s in songs" :key="s.id">
-        <div>{{ s.name }}</div>
+        <div>{{ s.id }}</div>
       </div>
     </Panel>
   </div>
@@ -23,7 +35,7 @@ export default {
   },
   async mounted() {
     const response = await SongsService.index();
-    console.log(response);
+    this.songs = response.data;
   }
 };
 </script>

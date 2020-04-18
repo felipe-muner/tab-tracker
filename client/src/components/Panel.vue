@@ -4,6 +4,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-title class="font-title">{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
+      <slot name="actions"></slot>
     </v-app-bar>
 
     <v-container>

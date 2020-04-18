@@ -1,9 +1,24 @@
 <template>
-  <h1>ola</h1>
+  <div>
+    <PanelCRUD>
+      <div slot="header">
+        ahahha
+      </div>
+      <div slot="footer">
+        ooter
+      </div>
+    </PanelCRUD>
+  </div>
 </template>
 
 <script>
-export default {};
+import PanelCRUD from "@/components/PanelCRUD.vue";
+
+export default {
+  components: {
+    PanelCRUD
+  }
+};
 </script>
 
 <style></style>

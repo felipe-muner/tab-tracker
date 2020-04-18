@@ -24,9 +24,6 @@ module.exports = {
   async register(req, res) {
     try {
       const user = await User.create(req.body);
-      console.log("async login(req, res) {");
-      console.log(user);
-      console.log("async login(req, res) {");
       res.send(user.toJSON());
     } catch (error) {
       console.log(error);

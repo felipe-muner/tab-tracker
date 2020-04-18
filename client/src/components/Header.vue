@@ -13,34 +13,53 @@
         @click="() => this.$router.push('/')"
         class="my-auto pb-0"
         style="cursor:pointer;"
-      >Felipe Muner - Portfolio</v-toolbar-title>
+        >Felipe Muner - Portfolio</v-toolbar-title
+      >
       <v-btn
         @click="() => this.$router.push('/')"
         class="primary--text my-auto ml-5"
         color="white"
-      >BROWSE</v-btn>
+        >BROWSE</v-btn
+      >
 
       <v-spacer></v-spacer>
-      <div class="my-auto" v-if="!$store.state.isUserLoggedIn">
-        <v-btn
-          class="primary--text ml-5"
-          color="white"
-          @click="() => this.$router.push('login')"
-        >Sign In</v-btn>
 
-        <v-btn
-          class="primary--text ml-5"
-          color="white"
-          @click="() => this.$router.push('register')"
-        >Sign Up</v-btn>
-      </div>
+      <v-btn
+        v-if="!$store.state.isUserLoggedIn"
+        class="primary--text ml-5 my-auto"
+        color="white"
+        @click="() => this.$router.push('login')"
+        >Sign In</v-btn
+      >
+
+      <v-btn
+        v-if="!$store.state.isUserLoggedIn"
+        class="primary--text ml-5 my-auto"
+        color="white"
+        @click="() => this.$router.push('register')"
+        >Sign Up</v-btn
+      >
+
+      <v-btn
+        v-if="$store.state.isUserLoggedIn"
+        class="primary--text ml-5 my-auto"
+        color="white"
+        @click="logout"
+        >Log Out</v-btn
+      >
     </v-toolbar>
   </v-card>
 </template>
 
 <script>
 export default {
-  methods: {},
+  methods: {
+    logout() {
+      this.$store.dispatch("setToken", null);
+      this.$store.dispatch("setUser", null);
+      this.$router.push({ name: "Home" });
+    }
+  },
   created() {}
 };
 </script>

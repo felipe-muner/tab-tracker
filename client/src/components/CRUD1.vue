@@ -1,12 +1,21 @@
 <template>
   <div>
     <PanelCRUD>
-      <div slot="title">{{ title + "felipe" }}</div>
+      <div slot="title">{{ title + "fel231ipe" }}</div>
       <div slot="header">
-        ahahha
+        ahahha2
       </div>
       <div slot="footer">
-        ooter
+        ooter2
+      </div>
+      <div slot="form-header">
+        ooter213eeee
+      </div>
+      <div slot="form-field">
+        ooterahahah
+      </div>
+      <div slot="form-button">
+        ooterhahahahaha220202
       </div>
     </PanelCRUD>
   </div>

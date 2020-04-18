@@ -16,7 +16,7 @@
         >Felipe Muner - Portfolio</v-toolbar-title
       >
       <v-btn
-        @click="() => this.$router.push('/')"
+        @click="() => this.$router.push({ name: 'songs' })"
         class="primary--text my-auto ml-5"
         color="white"
         >BROWSE</v-btn
@@ -28,7 +28,7 @@
         v-if="!$store.state.isUserLoggedIn"
         class="primary--text ml-5 my-auto"
         color="white"
-        @click="() => this.$router.push('login')"
+        @click="() => this.$router.push({ name: 'login' })"
         >Sign In</v-btn
       >
 
@@ -36,7 +36,7 @@
         v-if="!$store.state.isUserLoggedIn"
         class="primary--text ml-5 my-auto"
         color="white"
-        @click="() => this.$router.push('register')"
+        @click="() => this.$router.push({ name: 'register' })"
         >Sign Up</v-btn
       >
 

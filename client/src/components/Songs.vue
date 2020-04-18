@@ -1,22 +1,15 @@
 <template>
   <div>
-    <PanelCRUD>
-      <div slot="header">
-        ahahha
-      </div>
-      <div slot="footer">
-        ooter
-      </div>
-    </PanelCRUD>
+    <Panel title="Songs" />
   </div>
 </template>
 
 <script>
-import PanelCRUD from "@/components/PanelCRUD.vue";
+import Panel from "@/components/Panel.vue";
 
 export default {
   components: {
-    PanelCRUD
+    Panel
   }
 };
 </script>

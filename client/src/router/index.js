@@ -47,6 +47,12 @@ const routes = [
     name: "reuse-component",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ReuseComponent.vue")
+  },
+  {
+    path: "/component-tester",
+    name: "component-tester",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ComponentTester.vue")
   }
 ];
 

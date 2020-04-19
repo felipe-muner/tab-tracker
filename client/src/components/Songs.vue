@@ -19,7 +19,7 @@
       </div>-->
       <v-container>
         <v-row v-for="i in Math.ceil(songs.length / 3)" :key="i">
-          <span v-for="song in songs.slice((i - 1) * 3, i * 3)" :key="song" class="mx-auto">
+          <span v-for="song in songs.slice((i - 1) * 3, i * 3)" :key="song.id" class="mx-auto">
             <v-card class="ma-5" max-width="300" shaped>
               <v-img
                 class="white--text align-end"
@@ -37,7 +37,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" class="mr-3 mb-3">See more...</v-btn>
+                <v-btn color="primary" class="mr-3 mb-3" @click="() => alert(123)">See more...</v-btn>
               </v-card-actions>
             </v-card>
           </span>
@@ -57,7 +57,7 @@ export default {
   },
   data() {
     return {
-      songs: null
+      songs: []
     };
   },
   async mounted() {

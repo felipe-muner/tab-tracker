@@ -1,35 +1,40 @@
 <template>
-  <div>
-    <h1>qwe2s</h1>
-  </div>
+  <v-container>
+    <v-form ref="form" v-model="valid" lazy-validation>
+      <v-text-field v-model="name" :counter="10" :rules="nameRules" label="Name" required></v-text-field>
+
+      <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">Validate</v-btn>
+    </v-form>
+  </v-container>
 </template>
 
 <script>
 import ApiTesterComponent from "@/services/ApiTesterComponent";
 
 export default {
-  data() {
-    return {
-      valid: true,
-      name: "",
-      nameRules: [
-        v => !!v || "Name is required",
-        v => (v && v.length <= 10) || "Name must be less than 10 characters"
-      ]
-    };
-  },
+  data: () => ({
+    valid: true,
+    name: "",
+    nameRules: [
+      v => !!v || "Name is required",
+      v => (v && v.length <= 10) || "Name must be less than 10 characters"
+    ]
+  }),
+
   methods: {
-    async create() {
+    async validate() {
       if (this.$refs.form.validate()) {
-        // try {
-        //   const response = await SongsService.post(this.song);
-        //   this.$router.push({ name: "songs" });
-        // } catch (error) {
-        //   console.log(error);
-        // }
-      } else {
-        alert("fill up the blank fields.");
+        let response = await ApiTesterComponent().get(
+          "https://jsonplaceholder.typicode.com/users"
+        );
+        console.log(response.data);
       }
+    },
+    reset() {
+      this.$refs.form.reset();
+    },
+    resetValidation() {
+      this.$refs.form.resetValidation();
     }
   }
 };

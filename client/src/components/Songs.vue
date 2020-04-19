@@ -6,15 +6,16 @@
           class="blue white--text"
           small
           fab
+          fixed
           right
+          top
           @click="() => this.$router.push({ name: 'songs-create' })"
-          ><v-icon>+</v-icon></v-btn
         >
+          <v-icon>+</v-icon>
+        </v-btn>
       </div>
-      <br />
-      <br />
       <div v-for="s in songs" :key="s.id">
-        <div>{{ s.id }}</div>
+        <div>{{ s.title }}</div>
       </div>
     </Panel>
   </div>

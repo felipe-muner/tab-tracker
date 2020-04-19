@@ -37,7 +37,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" class="mr-3 mb-3" @click="() => alert(123)">See more...</v-btn>
+                <v-btn color="primary" class="mr-3 mb-3" @click="redirectTo(song.id)">See more...</v-btn>
               </v-card-actions>
             </v-card>
           </span>
@@ -59,6 +59,11 @@ export default {
     return {
       songs: []
     };
+  },
+  methods: {
+    redirectTo(id) {
+      this.$router.push({ name: "song", params: { songId: id } });
+    }
   },
   async mounted() {
     const response = await SongsService.index();

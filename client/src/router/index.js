@@ -43,6 +43,12 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/CreateSong.vue")
   },
   {
+    path: "/songs/:songId",
+    name: "song",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ViewSong.vue")
+  },
+  {
     path: "/reuse-component",
     name: "reuse-component",
     component: () =>

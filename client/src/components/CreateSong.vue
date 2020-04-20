@@ -70,25 +70,24 @@
         </v-row>
         <v-row>
           <v-col class="py-0">
-            <v-text-field
+            <v-textarea
               :rules="requiredRules"
               v-model="song.lyrics"
               label="Lyrics"
               outlined
               dense
               hint="Don't forget it"
-            ></v-text-field>
+            ></v-textarea>
           </v-col>
           <v-col class="py-0">
-            <v-text-field
+            <v-textarea
               :rules="requiredRules"
               v-model="song.tab"
               label="Tab"
               outlined
               dense
-              multi-line
               hint="Don't forget it"
-            ></v-text-field>
+            ></v-textarea>
           </v-col>
         </v-row>
         <v-row>

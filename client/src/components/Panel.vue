@@ -10,11 +10,11 @@
     <v-container>
       <v-row dense>
         <v-col cols="12">
-          <slot> No data defined. </slot>
+          <slot>No data defined.</slot>
           <!-- <div>
             <slot name="felipe"> </slot>
             <slot name="content"></slot>
-          </div> -->
+          </div>-->
         </v-col>
       </v-row>
     </v-container>

@@ -92,7 +92,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <v-btn color="primary" @click="create">Submit</v-btn>
+            <v-btn color="primary" @click="save">Save</v-btn>
           </v-col>
         </v-row>
       </v-form>
@@ -125,18 +125,23 @@ export default {
     };
   },
   methods: {
-    async create() {
+    async save() {
       if (this.$refs.form.validate()) {
         try {
-          const response = await SongsService.post(this.song);
-          this.$router.push({ name: "songs" });
+          await SongsService.put(this.song);
+          this.$router.push({
+            name: "song",
+            params: { songId: this.$route.params.songId }
+          });
         } catch (error) {
           this.error = error.response.data.error;
         }
       }
     }
   },
-  async mounted() {}
+  async mounted() {
+    this.song = (await SongsService.show(this.$route.params.songId)).data;
+  }
 };
 </script>
 

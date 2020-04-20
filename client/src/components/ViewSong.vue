@@ -78,12 +78,12 @@
 
 <script>
 import SongsService from "@/services/SongsService";
-import Panel from "@/components/Panel.vue";
+// import Panel from "@/components/Panel.vue";
 import VueYouTubeEmbed from "vue-youtube-embed";
 
 export default {
   components: {
-    Panel,
+    // Panel,
     VueYouTubeEmbed
   },
   data() {

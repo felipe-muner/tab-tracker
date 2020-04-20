@@ -102,12 +102,12 @@
 
 <script>
 import SongsService from "@/services/SongsService";
-import Panel from "@/components/Panel.vue";
+// import Panel from "@/components/Panel.vue";
 
 export default {
-  components: {
-    Panel
-  },
+  // components: {
+  //   Panel
+  // },
   data() {
     return {
       valid: false,

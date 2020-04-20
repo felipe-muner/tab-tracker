@@ -3,6 +3,19 @@
     <v-layout>
       <v-flex md6>
         <Panel title="Song">
+          <v-row class="text-right">
+            <v-col class="py-0">
+              <v-btn
+                @click="
+                  navigateTo({ name: 'song-edit', params: { songId: song.id } })
+                "
+                class="warning"
+                dark
+                outlined
+                >Edit Song</v-btn
+              >
+            </v-col>
+          </v-row>
           <v-layout>
             <v-card class="mx-auto">
               <v-list-item>
@@ -78,7 +91,11 @@ export default {
       song: {}
     };
   },
-  methods: {},
+  methods: {
+    navigateTo(route) {
+      this.$router.push(route);
+    }
+  },
   async mounted() {
     const response = await SongsService.show(this.$route.params.songId);
     this.song = response.data;

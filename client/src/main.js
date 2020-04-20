@@ -4,8 +4,10 @@ import router from "./router";
 import store from "@/store/store";
 import { sync } from "vuex-router-sync";
 import vuetify from "@/plugins/vuetify";
+import VueYouTubeEmbed from "vue-youtube-embed";
 
 const unsync = sync(store, router);
+Vue.use(VueYouTubeEmbed);
 
 Vue.config.productionTip = false;
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Panel title="Song"></Panel>
+    <Panel title="Song">{{song}}</Panel>
   </div>
 </template>
 
@@ -13,14 +13,14 @@ export default {
     Panel
   },
   data() {
-    return {};
+    return {
+      song: {}
+    };
   },
   methods: {},
-  created() {
-    console.log(this.$route.params.songId);
-
-    // const response = await SongsService.index();
-    // this.songs = response.data;
+  async mounted() {
+    const response = await SongsService.show(this.$route.params.songId);
+    this.song = response.data;
   }
 };
 </script>

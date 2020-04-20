@@ -6,10 +6,8 @@ export default {
   },
   post(song) {
     return Api().post("songs", song);
+  },
+  show(songId) {
+    return Api().get(`songs/${songId}`);
   }
 };
-
-// AuthenticationService.register({
-//   email: "blabla@gmail.com",
-//   password: "123456"
-// });

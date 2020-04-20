@@ -16,8 +16,8 @@ export default {
     return {};
   },
   methods: {},
-  mounted() {
-    console.log(this.$router.currentRoute.params.songId);
+  created() {
+    console.log(this.$route.params.songId);
 
     // const response = await SongsService.index();
     // this.songs = response.data;

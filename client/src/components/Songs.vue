@@ -19,7 +19,7 @@
       </div>-->
       <v-container>
         <v-row v-for="i in Math.ceil(songs.length / 3)" :key="i">
-          <span v-for="song in songs.slice((i - 1) * 3, i * 3)" :key="song.id" class="mx-auto">
+          <div v-for="song in songs.slice((i - 1) * 3, i * 3)" :key="song.id" class="mx-auto">
             <v-card class="ma-5" max-width="300" shaped>
               <v-img
                 class="white--text align-end"
@@ -40,7 +40,7 @@
                 <v-btn color="primary" class="mr-3 mb-3" @click="redirectTo(song.id)">See more...</v-btn>
               </v-card-actions>
             </v-card>
-          </span>
+          </div>
         </v-row>
       </v-container>
     </Panel>

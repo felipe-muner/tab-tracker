@@ -17,6 +17,22 @@
                 outlined
                 >Edit Song</v-btn
               >
+              <v-btn
+                class="warning"
+                dark
+                outlined
+                @click="bookmark"
+                v-if="isUserLoggedIn"
+                >Bookmark</v-btn
+              >
+              <v-btn
+                class="warning"
+                dark
+                outlined
+                @click="unbookmark"
+                v-if="isUserLoggedIn"
+                >unBookmark</v-btn
+              >
             </v-col>
           </v-row>
           <v-layout>
@@ -72,6 +88,7 @@
     <v-layout>
       <v-flex md12>
         <Panel>
+          {{ isUserLoggedIn }}
           <youtube :video-id="song.youtubeID"></youtube>
         </Panel>
       </v-flex>
@@ -84,10 +101,15 @@ import SongsService from "@/services/SongsService";
 // import Panel from "@/components/Panel.vue";
 import VueYouTubeEmbed from "vue-youtube-embed";
 
+import { mapState } from "vuex";
+
 export default {
   components: {
     // Panel,
     VueYouTubeEmbed
+  },
+  computed: {
+    ...mapState(["isUserLoggedIn"])
   },
   data() {
     return {
@@ -95,6 +117,8 @@ export default {
     };
   },
   methods: {
+    bookmark() {},
+    unbookmark() {},
     navigateTo(route) {
       this.$router.push(route);
     }

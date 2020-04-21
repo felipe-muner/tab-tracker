@@ -30,12 +30,7 @@
               <!-- <v-row>
               <v-col md="4" offset-md="4">-->
               <v-card class="pa-2 elevation-0">
-                <v-text-field
-                  v-model="email"
-                  label="E-mail"
-                  outlined
-                  hint="Don't forget it"
-                ></v-text-field>
+                <v-text-field v-model="email" label="E-mail" outlined hint="Don't forget it"></v-text-field>
                 <v-text-field
                   v-model="password"
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
@@ -82,6 +77,7 @@ export default {
         });
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.user);
+        this.$router.push({ name: "songs" });
       } catch (error) {
         // for (let [key, value] of Object.entries(error)) {
         //   console.log(`${key}: ${value}`);

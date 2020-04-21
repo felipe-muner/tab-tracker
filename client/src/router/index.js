@@ -65,6 +65,12 @@ const routes = [
     name: "component-tester",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ComponentTester.vue")
+  },
+  {
+    path: "*",
+    redirect: "songs",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ComponentTester.vue")
   }
 ];
 

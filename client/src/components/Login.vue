@@ -59,8 +59,11 @@ export default {
           email: this.email,
           password: this.password
         });
+
+        console.log(response.data);
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.user);
+        this.$router.push({ name: "songs" });
       } catch (error) {
         this.error = error.response.data.error;
       }
@@ -70,5 +73,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-// <style scoped lang="scss">
-</style>
+// <style scoped lang="scss"></style>

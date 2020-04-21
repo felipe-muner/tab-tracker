@@ -22,7 +22,7 @@
                 dark
                 outlined
                 @click="bookmark"
-                v-if="isUserLoggedIn"
+                v-if="isUserLoggedIn && !isBookmark"
                 >Bookmark</v-btn
               >
               <v-btn
@@ -30,7 +30,7 @@
                 dark
                 outlined
                 @click="unbookmark"
-                v-if="isUserLoggedIn"
+                v-if="isUserLoggedIn && isBookmark"
                 >unBookmark</v-btn
               >
             </v-col>
@@ -88,7 +88,6 @@
     <v-layout>
       <v-flex md12>
         <Panel>
-          {{ isUserLoggedIn }}
           <youtube :video-id="song.youtubeID"></youtube>
         </Panel>
       </v-flex>
@@ -102,6 +101,7 @@ import SongsService from "@/services/SongsService";
 import VueYouTubeEmbed from "vue-youtube-embed";
 
 import { mapState } from "vuex";
+import BookmarksService from "@/services/BookmarksService";
 
 export default {
   components: {
@@ -113,7 +113,8 @@ export default {
   },
   data() {
     return {
-      song: {}
+      song: {},
+      isBookmark: false
     };
   },
   methods: {
@@ -121,12 +122,24 @@ export default {
     unbookmark() {},
     navigateTo(route) {
       this.$router.push(route);
+    },
+    async getSongData() {
+      const response = await SongsService.show(this.$route.params.songId);
+      this.song = response.data;
+      this.getBookmark();
+    },
+    async getBookmark() {
+      const bookmark = (
+        await BookmarksService.index({
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        })
+      ).data;
+      this.isBookmark = !!bookmark;
     }
   },
   async mounted() {
-    const response = await SongsService.show(this.$route.params.songId);
-    this.song = response.data;
-    console.log(this.song);
+    this.getSongData();
   }
 };
 </script>

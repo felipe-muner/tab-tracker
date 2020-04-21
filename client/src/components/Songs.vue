@@ -74,15 +74,23 @@ export default {
       songs: []
     };
   },
+  watch: {
+    "$route.query.search": {
+      immediate: true,
+      async handler(value) {
+        this.songs = (await SongsService.index(value)).data;
+      }
+    }
+  },
   methods: {
     redirectTo(id) {
       this.$router.push({ name: "song", params: { songId: id } });
     }
-  },
-  async mounted() {
-    const response = await SongsService.index();
-    this.songs = response.data;
   }
+  // async mounted() {
+  //   const response = await SongsService.index();
+  //   this.songs = response.data;
+  // }
 };
 </script>
 

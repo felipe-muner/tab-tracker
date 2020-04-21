@@ -6,9 +6,12 @@
           <v-row class="text-right">
             <v-col class="py-0">
               <v-btn
-                @click="
-                  navigateTo({ name: 'song-edit', params: { songId: song.id } })
-                "
+                :to="{
+                  name: 'song-edit',
+                  params() {
+                    return { songId: song.id };
+                  }
+                }"
                 class="warning"
                 dark
                 outlined

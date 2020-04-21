@@ -9,16 +9,20 @@
     >
       <v-app-bar-nav-icon class="my-auto"></v-app-bar-nav-icon>
 
-      <v-toolbar-title
-        @click="() => this.$router.push('/')"
-        class="my-auto pb-0"
+      <router-link
+        tag="v-toolbar-title"
+        :to="{ name: 'Home' }"
         style="cursor:pointer;"
-      >Felipe Muner - Portfolio</v-toolbar-title>
+        class="my-auto pb-0"
+      >
+        Felipe Muner - Portfolio
+      </router-link>
       <v-btn
         @click="() => this.$router.push({ name: 'songs' })"
         class="primary--text my-auto ml-5"
         color="white"
-      >BROWSE</v-btn>
+        >BROWSE</v-btn
+      >
 
       <v-spacer></v-spacer>
 
@@ -27,21 +31,24 @@
         class="primary--text ml-5 my-auto"
         color="white"
         @click="() => this.$router.push({ name: 'login' })"
-      >Sign In</v-btn>
+        >Sign In</v-btn
+      >
 
       <v-btn
         v-if="!$store.state.isUserLoggedIn"
         class="primary--text ml-5 my-auto"
         color="white"
         @click="() => this.$router.push({ name: 'register' })"
-      >Sign Up</v-btn>
+        >Sign Up</v-btn
+      >
 
       <v-btn
         v-if="$store.state.isUserLoggedIn"
         class="primary--text ml-5 my-auto"
         color="white"
         @click="logout"
-      >Log Out</v-btn>
+        >Log Out</v-btn
+      >
     </v-toolbar>
   </v-card>
 </template>

@@ -21,17 +21,18 @@
                 class="warning"
                 dark
                 outlined
-                @click="bookmark"
-                v-if="isUserLoggedIn && !isBookmark"
-                >Bookmark</v-btn
+                @click="setbookmark"
+                v-if="isUserLoggedIn && !bookmark"
+                >set bookmark</v-btn
               >
+              {{ bookmark }}
               <v-btn
                 class="warning"
                 dark
                 outlined
-                @click="unbookmark"
-                v-if="isUserLoggedIn && isBookmark"
-                >unBookmark</v-btn
+                @click="unsetbookmark"
+                v-if="isUserLoggedIn && bookmark"
+                >unset bookmark</v-btn
               >
             </v-col>
           </v-row>
@@ -114,28 +115,50 @@ export default {
   data() {
     return {
       song: {},
-      isBookmark: false
+      bookmark: null
     };
   },
   methods: {
-    bookmark() {},
-    unbookmark() {},
-    navigateTo(route) {
-      this.$router.push(route);
+    async setbookmark() {
+      try {
+        this.bookmark = (
+          await BookmarksService.post({
+            SongId: this.song.id,
+            UserId: this.$store.state.user.id
+          })
+        ).data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async unsetbookmark() {
+      try {
+        await BookmarksService.delete(this.bookmark.id);
+        this.bookmark = null;
+      } catch (error) {
+        console.log(error);
+      }
     },
     async getSongData() {
-      const response = await SongsService.show(this.$route.params.songId);
-      this.song = response.data;
-      this.getBookmark();
+      try {
+        const response = await SongsService.show(this.$route.params.songId);
+        this.song = response.data;
+        this.getBookmark();
+      } catch (error) {
+        console.log(error);
+      }
     },
     async getBookmark() {
-      const bookmark = (
-        await BookmarksService.index({
-          songId: this.song.id,
-          userId: this.$store.state.user.id
-        })
-      ).data;
-      this.isBookmark = !!bookmark;
+      try {
+        this.bookmark = (
+          await BookmarksService.index({
+            songId: this.song.id,
+            userId: this.$store.state.user.id
+          })
+        ).data;
+      } catch (error) {
+        console.log(error);
+      }
     }
   },
   async mounted() {

@@ -24,6 +24,8 @@ module.exports = {
 
   async post(req, res) {
     try {
+      console.log(req.body);
+
       const bookmark = await Bookmark.create(req.body);
       res.send(bookmark);
     } catch (error) {
